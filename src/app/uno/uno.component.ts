@@ -48,7 +48,7 @@ constructor(private cdr: ChangeDetectorRef){
 }
 
 nombre = "Jugador 1";
-
+nombre2 = "Jugador Franco";
 
 mezclarCartasYRepartir () {
    this.nuevoJugador = {
