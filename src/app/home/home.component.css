@@ -1,0 +1,39 @@
+.container-general{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container-lista-juegos{
+    display: flex;
+    background: #22C1C3;
+    background: linear-gradient(0deg,rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    width: 800px;
+    height: 500px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+
+.container-lista-juegos__juego{
+    background-color: white;
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.container-lista-juegos__juego:hover{
+    background: #3F5EFB;
+    background: radial-gradient(circle,rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    color: white;
+    transition: all 1s ease-out;
+}
