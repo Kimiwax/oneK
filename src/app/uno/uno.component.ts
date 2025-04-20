@@ -80,9 +80,30 @@ mezclarCartasYRepartir () {
       });
   
     }
+    
 
     console.log("cartas", this.nuevoJugador.cartas)
   }
+
+    
+  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+  const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+
+  if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
+    this.barajaActiva.push({
+      ...this.carta.cartas[indiceAleatorioCartas],
+      color: {nombre:"especial", codColor: '#19282F'}
+    });
+
+  }
+  else{
+    this.barajaActiva.push({
+      ...this.carta.cartas[indiceAleatorioCartas],
+      color: this.carta.color[indiceAleatorioColor]
+    });
+
+  }
+
 
   this.cdr.detectChanges();
 }
