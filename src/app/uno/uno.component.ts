@@ -17,6 +17,7 @@ interface Jugador {
 export class UnoComponent {
 
   nuevoJugador: any;
+  barajaActiva: any;
   
 //   cartasEspeciales: [
 //     { valor: "+4", tipo: "accion", colores: ["rojo", "verde", "azul", "amarillo"] }, 
@@ -62,7 +63,7 @@ mezclarCartasYRepartir () {
     const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
     console.log(indiceAleatorioCartas)
 
-    
+
     if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
       this.nuevoJugador.cartas.push({
         ...this.carta.cartas[indiceAleatorioCartas],
@@ -82,6 +83,46 @@ mezclarCartasYRepartir () {
   }
 
   this.cdr.detectChanges();
+}
+
+agarrarCarta(){
+  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+    console.log(indiceAleatorioCartas)
+
+
+    if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
+      this.nuevoJugador.cartas.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: {nombre:"especial", codColor: '#19282F'}
+      });
+  
+    }
+    else{
+      this.nuevoJugador.cartas.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: this.carta.color[indiceAleatorioColor]
+      });
+  
+    }
+
+    console.log("cartas", this.nuevoJugador.cartas)
+}
+
+jugarCarta(){
+
+}
+
+saltarJugador(){
+
+}
+
+cambiarSentido(){
+
+}
+
+darCarta(cantidad:any){
+
 }
 
 crupierGeneral(){
