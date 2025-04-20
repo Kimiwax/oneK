@@ -1,11 +1,13 @@
 <button routerLink="/home" routerLinkActive="active">Volver</button>
 <button (click)="mezclarCartasYRepartir()">Barajar</button>
-<div class="baraja" (click)="agarrarCarta()"></div>
+<div class="container-barajas" style="display: flex; flex-direction: row; justify-content: center; gap: 2rem;">
+    <div class="baraja" (click)="agarrarCarta()">Levantar Carta</div>
 <div [style.background]="barajaActiva.slice(-1)[0]?.color.codColor" class="barajaActiva">{{barajaActiva.slice(-1)[0]?.valor}}</div>
+</div>
 <div class="container" style="display: flex
 ;
     flex-direction: row;
-    justify-content: center;">
+    justify-content: center; flex-wrap: wrap;">
     <div class="cartas" style="border-color: black;" [style.background]="persona.color.codColor" *ngFor="let persona of nuevoJugador.cartas">
         {{persona.valor}}
         </div>
