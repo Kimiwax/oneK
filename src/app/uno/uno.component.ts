@@ -98,6 +98,11 @@ agarrarCarta(){
         ...this.carta.cartas[indiceAleatorioCartas],
         color: {nombre:"especial", codColor: '#19282F'}
       });
+
+      this.barajaActiva.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: {nombre:"especial", codColor: '#19282F'}
+      })
   
     }
     else{
