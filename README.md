@@ -1,6 +1,10 @@
-Version Node 22.14.0
-Version Angular 19
 
-1- Instalar Version de node y angular;
-2- Ejecutar comando npm install
-3- Para levantar en local ejecutar comando ng serve
+### Requisitos
+- Node.js v22.14.0
+- Angular Angular 19
+
+# Instalar
+
+- Instalar Version de node y angular;
+- Ejecutar comando npm install
+- Para levantar en local ejecutar comando ng serve
