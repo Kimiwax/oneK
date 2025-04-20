@@ -18,6 +18,7 @@ export class UnoComponent {
 
   nuevoJugador: any;
   barajaActiva: Array<any> = [];
+  bComenzoJuego: boolean = false;
   
 //   cartasEspeciales: [
 //     { valor: "+4", tipo: "accion", colores: ["rojo", "verde", "azul", "amarillo"] }, 
@@ -44,7 +45,7 @@ carta = {
     ]
   };
 constructor(private cdr: ChangeDetectorRef){
-
+  this.mezclarCartasYRepartir();
 }
 
 nombre = "Jugador 1";
@@ -104,12 +105,13 @@ mezclarCartasYRepartir () {
 
   }
 
-
-  this.cdr.detectChanges();
+this.bComenzoJuego = true;
+  //this.cdr.detectChanges();
 }
 
 agarrarCarta(){
-  let indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+  if(this.bComenzoJuego){
+    let indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
     let indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
     console.log(indiceAleatorioCartas)
 
@@ -131,6 +133,7 @@ agarrarCarta(){
 
     console.log("cartas", this.nuevoJugador.cartas)
     console.log("cartasV", this.barajaActiva)
+  }
 }
 
 jugarCarta(){
