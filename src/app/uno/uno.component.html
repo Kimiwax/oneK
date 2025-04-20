@@ -1,2 +1,11 @@
 <button routerLink="/home" routerLinkActive="active">Volver</button>
-<h1>uno works!</h1>
+<button (click)="mezclarCartasYRepartir()">Barajar</button>
+
+<div class="container" style="display: flex
+;
+    flex-direction: row;
+    justify-content: center;">
+    <div class="cartas" style="border-color: black;" [style.background]="persona.color.codColor" *ngFor="let persona of nuevoJugador.cartas">
+        {{persona.valor}}
+        </div>
+</div>
