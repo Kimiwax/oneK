@@ -17,7 +17,7 @@ interface Jugador {
 export class UnoComponent {
 
   nuevoJugador: any;
-  barajaActiva: any;
+  barajaActiva: Array<any> = [];
   
 //   cartasEspeciales: [
 //     { valor: "+4", tipo: "accion", colores: ["rojo", "verde", "azul", "amarillo"] }, 
@@ -103,10 +103,16 @@ agarrarCarta(){
         ...this.carta.cartas[indiceAleatorioCartas],
         color: this.carta.color[indiceAleatorioColor]
       });
+
+      this.barajaActiva.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: this.carta.color[indiceAleatorioColor]
+      })
   
     }
 
     console.log("cartas", this.nuevoJugador.cartas)
+    console.log("cartasV", this.barajaActiva)
 }
 
 jugarCarta(){
