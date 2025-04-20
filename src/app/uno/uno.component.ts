@@ -86,20 +86,20 @@ mezclarCartasYRepartir () {
   }
 
     
-  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
-  const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+  const indiceAleatorioCartasTest = Math.floor(Math.random() * this.carta.cartas.length);
+  const indiceAleatorioColorTest = Math.floor(Math.random() * this.carta.color.length);
 
-  if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
+  if(indiceAleatorioCartasTest == 13 || indiceAleatorioCartasTest == 14){
     this.barajaActiva.push({
-      ...this.carta.cartas[indiceAleatorioCartas],
+      ...this.carta.cartas[indiceAleatorioCartasTest],
       color: {nombre:"especial", codColor: '#19282F'}
     });
 
   }
   else{
     this.barajaActiva.push({
-      ...this.carta.cartas[indiceAleatorioCartas],
-      color: this.carta.color[indiceAleatorioColor]
+      ...this.carta.cartas[indiceAleatorioCartasTest],
+      color: this.carta.color[indiceAleatorioColorTest]
     });
 
   }
@@ -109,8 +109,8 @@ mezclarCartasYRepartir () {
 }
 
 agarrarCarta(){
-  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
-    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+  let indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+    let indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
     console.log(indiceAleatorioCartas)
 
 
@@ -120,22 +120,12 @@ agarrarCarta(){
         color: {nombre:"especial", codColor: '#19282F'}
       });
 
-      this.barajaActiva.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: {nombre:"especial", codColor: '#19282F'}
-      })
-  
     }
     else{
       this.nuevoJugador.cartas.push({
         ...this.carta.cartas[indiceAleatorioCartas],
         color: this.carta.color[indiceAleatorioColor]
       });
-
-      this.barajaActiva.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: this.carta.color[indiceAleatorioColor]
-      })
   
     }
 
