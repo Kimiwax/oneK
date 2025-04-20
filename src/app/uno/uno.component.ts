@@ -8,25 +8,33 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './uno.component.css'
 })
 export class UnoComponent {
-cartasRojas = {
-    color: "rojo",
+  
+  Persona: {
+    id: number;
+    nombre: string;
+    puntaje: number;
+    cartas: Array<any>;
+  }
+  
+cartas = {
+    color: ["rojo", "verde", "azul", "amarillo"],
     cartas: {
       numeros: [
         { valor: "0", tipo: "numero" },
-        { valor: "1", tipo: "numero" }, { valor: "1", tipo: "numero" },
-        { valor: "2", tipo: "numero" }, { valor: "2", tipo: "numero" },
-        { valor: "3", tipo: "numero" }, { valor: "3", tipo: "numero" },
-        { valor: "4", tipo: "numero" }, { valor: "4", tipo: "numero" },
-        { valor: "5", tipo: "numero" }, { valor: "5", tipo: "numero" },
-        { valor: "6", tipo: "numero" }, { valor: "6", tipo: "numero" },
-        { valor: "7", tipo: "numero" }, { valor: "7", tipo: "numero" },
-        { valor: "8", tipo: "numero" }, { valor: "8", tipo: "numero" },
-        { valor: "9", tipo: "numero" }, { valor: "9", tipo: "numero" }
+        { valor: "1", tipo: "numero" },
+        { valor: "2", tipo: "numero" }, 
+        { valor: "3", tipo: "numero" }, 
+        { valor: "4", tipo: "numero" }, 
+        { valor: "5", tipo: "numero" }, 
+        { valor: "6", tipo: "numero" }, 
+        { valor: "7", tipo: "numero" },
+        { valor: "8", tipo: "numero" }, 
+        { valor: "9", tipo: "numero" }, 
       ],
       acciones: [
-        { valor: "+2", tipo: "accion" }, { valor: "+2", tipo: "accion" },
-        { valor: "salta", tipo: "accion" }, { valor: "salta", tipo: "accion" },
-        { valor: "reversa", tipo: "accion" }, { valor: "reversa", tipo: "accion" }
+        { valor: "+2", tipo: "accion" }, 
+        { valor: "salta", tipo: "accion" },
+        { valor: "reversa", tipo: "accion" },
       ]
     }
   };
