@@ -1,7 +1,7 @@
 <button routerLink="/home" routerLinkActive="active">Volver</button>
 <button (click)="mezclarCartasYRepartir()">Barajar</button>
 <div class="baraja" (click)="agarrarCarta()"></div>
-<div class="barajaActiva">{{barajaActiva.slice(-1)[0]?.valor}}</div>
+<div [style.background]="barajaActiva.slice(-1)[0]?.color.codColor" class="barajaActiva">{{barajaActiva.slice(-1)[0]?.valor}}</div>
 <div class="container" style="display: flex
 ;
     flex-direction: row;
