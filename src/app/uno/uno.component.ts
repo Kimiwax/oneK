@@ -17,6 +17,8 @@ interface Jugador {
 })
 export class UnoComponent {
 
+  //// ACA VAN LAS VARIABLES GLOBALES
+
   nuevoJugador: any;
   barajaActiva: Array<any> = [];
   bComenzoJuego: boolean = false;
@@ -50,6 +52,7 @@ constructor(private cdr: ChangeDetectorRef){
   this.mezclarCartasYRepartir();
 }
 
+//// ACA VAN LOS METODOS
 
   private obtenerCartaAleatoria(): any {
     const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
@@ -76,9 +79,18 @@ constructor(private cdr: ChangeDetectorRef){
   agarrarCarta() {
     const nuevaCarta = this.obtenerCartaAleatoria();
     this.nuevoJugador.cartas.push(nuevaCarta);
-    this.barajaActiva.push(nuevaCarta);
+    // this.barajaActiva.push(nuevaCarta);
 
     console.log('cartas', this.nuevoJugador.cartas);
     console.log('cartasV', this.barajaActiva);
   }
+
+  tirarCarta() {
+    console.log("Click tirar carta");
+
+
+
+
+    
+    }
 }
