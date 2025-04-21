@@ -18,6 +18,7 @@ export class UnoComponent {
 
   nuevoJugador: any;
   barajaActiva: Array<any> = [];
+  bComenzoJuego: boolean = false;
   
 carta = {
     color: [{nombre:"rojo", codColor: '#EB5353'},{nombre:"verde", codColor: '#36AE7C'},{nombre:"azul", codColor: '#187498'},{nombre:"amarillo", codColor: '#F9D923'}],
@@ -40,7 +41,7 @@ carta = {
     ]
   };
 constructor(private cdr: ChangeDetectorRef){
-
+  this.mezclarCartasYRepartir();
 }
 
 
@@ -69,23 +70,85 @@ mezclarCartasYRepartir() {
   console.log(this.nuevoJugador);
 
   while (this.nuevoJugador.cartas.length < 7) {
-    this.nuevoJugador.cartas.push(this.obtenerCartaAleatoria());
-    console.log("cartas", this.nuevoJugador.cartas);
+    const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+    console.log(indiceAleatorioCartas)
+
+
+    if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
+      this.nuevoJugador.cartas.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: {nombre:"especial", codColor: '#19282F'}
+      });
+  
+    }
+    else{
+      this.nuevoJugador.cartas.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: this.carta.color[indiceAleatorioColor]
+      });
+  
+    }
+
+    console.log("cartas", this.nuevoJugador.cartas)
   }
 
-  this.cdr.detectChanges();
+    
+  const indiceAleatorioCartasTest = Math.floor(Math.random() * this.carta.cartas.length);
+  const indiceAleatorioColorTest = Math.floor(Math.random() * this.carta.color.length);
+
+  if(indiceAleatorioCartasTest == 13 || indiceAleatorioCartasTest == 14){
+    this.barajaActiva.push({
+      ...this.carta.cartas[indiceAleatorioCartasTest],
+      color: {nombre:"especial", codColor: '#19282F'}
+    });
+
+  }
+  else{
+    this.barajaActiva.push({
+      ...this.carta.cartas[indiceAleatorioCartasTest],
+      color: this.carta.color[indiceAleatorioColorTest]
+    });
+
+  }
+
+this.bComenzoJuego = true;
+  //this.cdr.detectChanges();
 }
 
-agarrarCarta() {
+agarrarCarta(){
+  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+    console.log(indiceAleatorioCartas)
+
+
+    if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
+      this.nuevoJugador.cartas.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: {nombre:"especial", codColor: '#19282F'}
+      });
+
+      this.barajaActiva.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: {nombre:"especial", codColor: '#19282F'}
+      })
   
-  alert("Estoy en agarrar carta");
+    }
+    else{
+      this.nuevoJugador.cartas.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: this.carta.color[indiceAleatorioColor]
+      });
 
-  const nuevaCarta = this.obtenerCartaAleatoria();
-  this.nuevoJugador.cartas.push(nuevaCarta);
-  this.barajaActiva.push(nuevaCarta);
+      this.barajaActiva.push({
+        ...this.carta.cartas[indiceAleatorioCartas],
+        color: this.carta.color[indiceAleatorioColor]
+      })
+  
+    }
 
-  console.log("cartas", this.nuevoJugador.cartas);
-  console.log("cartasV", this.barajaActiva);
+    console.log("cartas", this.nuevoJugador.cartas)
+    console.log("cartasV", this.barajaActiva)
 }
 
 
