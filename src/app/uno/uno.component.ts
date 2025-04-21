@@ -16,6 +16,8 @@ interface Jugador {
 })
 export class UnoComponent {
 
+  ////ACA SE DEFINEN VARIABLES GLOBALES, YA SEAN BOOLEANOS, DATOS, ARRAY, OBJETOS
+
   nuevoJugador: any;
   barajaActiva: Array<any> = [];
   bComenzoJuego: boolean = false;
@@ -43,6 +45,10 @@ carta = {
 constructor(private cdr: ChangeDetectorRef){
   this.mezclarCartasYRepartir();
 }
+
+
+
+///////// ACA SE DEFINEN METODOS
 
 
 private obtenerCartaAleatoria(): any {
