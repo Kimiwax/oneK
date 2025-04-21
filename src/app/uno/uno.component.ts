@@ -18,6 +18,7 @@ export class UnoComponent {
 
   nuevoJugador: any;
   barajaActiva: Array<any> = [];
+  bComenzoJuego: boolean = false;
   
 //   cartasEspeciales: [
 //     { valor: "+4", tipo: "accion", colores: ["rojo", "verde", "azul", "amarillo"] }, 
@@ -44,9 +45,11 @@ carta = {
     ]
   };
 constructor(private cdr: ChangeDetectorRef){
-
+  this.mezclarCartasYRepartir();
 }
 
+nombre = "Jugador 1";
+nombre2 = "Jugador Franco";
 
 mezclarCartasYRepartir () {
    this.nuevoJugador = {
@@ -78,16 +81,38 @@ mezclarCartasYRepartir () {
       });
   
     }
+    
 
     console.log("cartas", this.nuevoJugador.cartas)
   }
 
-  this.cdr.detectChanges();
+    
+  const indiceAleatorioCartasTest = Math.floor(Math.random() * this.carta.cartas.length);
+  const indiceAleatorioColorTest = Math.floor(Math.random() * this.carta.color.length);
+
+  if(indiceAleatorioCartasTest == 13 || indiceAleatorioCartasTest == 14){
+    this.barajaActiva.push({
+      ...this.carta.cartas[indiceAleatorioCartasTest],
+      color: {nombre:"especial", codColor: '#19282F'}
+    });
+
+  }
+  else{
+    this.barajaActiva.push({
+      ...this.carta.cartas[indiceAleatorioCartasTest],
+      color: this.carta.color[indiceAleatorioColorTest]
+    });
+
+  }
+
+this.bComenzoJuego = true;
+  //this.cdr.detectChanges();
 }
 
 agarrarCarta(){
-  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
-    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+  if(this.bComenzoJuego){
+    let indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+    let indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
     console.log(indiceAleatorioCartas)
 
 
@@ -96,23 +121,19 @@ agarrarCarta(){
         ...this.carta.cartas[indiceAleatorioCartas],
         color: {nombre:"especial", codColor: '#19282F'}
       });
-  
+
     }
     else{
       this.nuevoJugador.cartas.push({
         ...this.carta.cartas[indiceAleatorioCartas],
         color: this.carta.color[indiceAleatorioColor]
       });
-
-      this.barajaActiva.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: this.carta.color[indiceAleatorioColor]
-      })
   
     }
 
     console.log("cartas", this.nuevoJugador.cartas)
     console.log("cartasV", this.barajaActiva)
+  }
 }
 
 jugarCarta(){
