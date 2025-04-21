@@ -19,10 +19,6 @@ export class UnoComponent {
   nuevoJugador: any;
   barajaActiva: Array<any> = [];
   
-//   cartasEspeciales: [
-//     { valor: "+4", tipo: "accion", colores: ["rojo", "verde", "azul", "amarillo"] }, 
-//     { valor: "cambioColor", tipo: "accion", colores: ["rojo", "verde", "azul", "amarillo"] },
-// ]
 carta = {
     color: [{nombre:"rojo", codColor: '#EB5353'},{nombre:"verde", codColor: '#36AE7C'},{nombre:"azul", codColor: '#187498'},{nombre:"amarillo", codColor: '#F9D923'}],
     cartas: [
@@ -47,80 +43,51 @@ constructor(private cdr: ChangeDetectorRef){
 
 }
 
-nombre = "Jugador 1";
-nombre2 = "Jugador Franco";
 
-mezclarCartasYRepartir () {
-   this.nuevoJugador = {
-    id: 1,
-    nombre: 'Momo',
-    puntaje: 0,
-    cartas: [] 
+private obtenerCartaAleatoria(): any {
+  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
+  const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
+
+  const cartaSeleccionada = {
+    ...this.carta.cartas[indiceAleatorioCartas],
+    color: (indiceAleatorioCartas === 13 || indiceAleatorioCartas === 14)
+      ? { nombre: "especial", codColor: "#19282F" }
+      : this.carta.color[indiceAleatorioColor]
   };
 
-  console.log(this.nuevoJugador)
+  return cartaSeleccionada;
+}
+
+mezclarCartasYRepartir() {
+  this.nuevoJugador = {
+    id: 1,
+    nombre: "Momo",
+    puntaje: 0,
+    cartas: []
+  };
+
+  console.log(this.nuevoJugador);
 
   while (this.nuevoJugador.cartas.length < 7) {
-    const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
-    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
-    console.log(indiceAleatorioCartas)
-
-
-    if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
-      this.nuevoJugador.cartas.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: {nombre:"especial", codColor: '#19282F'}
-      });
-  
-    }
-    else{
-      this.nuevoJugador.cartas.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: this.carta.color[indiceAleatorioColor]
-      });
-  
-    }
-
-    console.log("cartas", this.nuevoJugador.cartas)
+    this.nuevoJugador.cartas.push(this.obtenerCartaAleatoria());
+    console.log("cartas", this.nuevoJugador.cartas);
   }
 
   this.cdr.detectChanges();
 }
 
-agarrarCarta(){
-  const indiceAleatorioCartas = Math.floor(Math.random() * this.carta.cartas.length);
-    const indiceAleatorioColor = Math.floor(Math.random() * this.carta.color.length);
-    console.log(indiceAleatorioCartas)
-
-
-    if(indiceAleatorioCartas == 13 || indiceAleatorioCartas == 14){
-      this.nuevoJugador.cartas.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: {nombre:"especial", codColor: '#19282F'}
-      });
-
-      this.barajaActiva.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: {nombre:"especial", codColor: '#19282F'}
-      })
+agarrarCarta() {
   
-    }
-    else{
-      this.nuevoJugador.cartas.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: this.carta.color[indiceAleatorioColor]
-      });
+  alert("Estoy en agarrar carta");
 
-      this.barajaActiva.push({
-        ...this.carta.cartas[indiceAleatorioCartas],
-        color: this.carta.color[indiceAleatorioColor]
-      })
-  
-    }
+  const nuevaCarta = this.obtenerCartaAleatoria();
+  this.nuevoJugador.cartas.push(nuevaCarta);
+  this.barajaActiva.push(nuevaCarta);
 
-    console.log("cartas", this.nuevoJugador.cartas)
-    console.log("cartasV", this.barajaActiva)
+  console.log("cartas", this.nuevoJugador.cartas);
+  console.log("cartasV", this.barajaActiva);
 }
+
 
 jugarCarta(){
 
