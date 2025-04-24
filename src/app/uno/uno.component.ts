@@ -1,7 +1,8 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-
+import { SocketService } from '../services/socket.service';
+import { Socket } from 'socket.io-client';
 interface Jugador {
   id: number;
   nombre: string;
@@ -15,7 +16,30 @@ interface Jugador {
   templateUrl: './uno.component.html',
   styleUrl: './uno.component.css',
 })
-export class UnoComponent {
+export class UnoComponent implements OnInit  {
+
+ 
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private socketService: SocketService){
+    this.mezclarCartasYRepartir();
+
+  }
+  private socket!: Socket;
+
+
+
+  ngOnInit(): void {
+    this.socket = this.socketService.getSocket();
+
+    // ✅ Solo para verificar que se conectó:
+    this.socket.on('connect', () => {
+      console.log('🎉 Conectado al servidor con ID:', this.socket.id);
+    });
+  }
+
+
+
 
   //// ACA VAN LAS VARIABLES GLOBALES
 
@@ -48,10 +72,9 @@ export class UnoComponent {
       { valor: 'cambioColor', tipo: 'accion' },
     ],
   };
-constructor(private cdr: ChangeDetectorRef){
-  this.mezclarCartasYRepartir();
-}
 
+
+  
 //// ACA VAN LOS METODOS
 
   private obtenerCartaAleatoria(): any {
