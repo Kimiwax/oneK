@@ -4,10 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { TrucoComponent } from './truco/truco.component';
 import { ChinchonComponent } from './chinchon/chinchon.component';
 import { EscobaComponent } from './escoba/escoba.component';
+import { LobbyComponent } from './uno/lobby/lobby.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirige a 'uno' por defecto
     { path: 'Uno', component: UnoComponent },
+    {path: 'Uno/lobby', component: LobbyComponent},
     { path: 'Truco', component: TrucoComponent },
     { path: 'Chinchon', component: ChinchonComponent },
     { path: 'Escoba', component: EscobaComponent },

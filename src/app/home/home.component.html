@@ -4,8 +4,8 @@
 <h1 style="display: flex; flex-direction: row; justify-content: center;">Juegos Disponibles</h1>
 <div class="container-general">
     <div class="container-lista-juegos">
-        <div class="container-lista-juegos__juego" *ngFor="let item of juegosDisponibles;" routerLink="/{{item}}" routerLinkActive="active">
-            {{item}}
+        <div class="container-lista-juegos__juego" *ngFor="let item of juegosDisponibles;" routerLink="/{{item.path}}" routerLinkActive="active">
+            {{item.name}}
         </div>
     </div>
 </div>
