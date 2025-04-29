@@ -1,7 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { SocketService } from '../services/socket.service';
+import { SocketService } from '../../services/socket.service';
 import { Socket } from 'socket.io-client';
 interface Jugador {
   id: number;

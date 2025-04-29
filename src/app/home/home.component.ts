@@ -19,7 +19,7 @@ import { DialogUserComponent } from '../components/dialog-user/dialog-user.compo
 export class HomeComponent {
   private readonly dialogs = inject(TuiDialogService);
 
-  juegosDisponibles = ['Uno', 'Truco','Chinchon', 'Escoba']
+  juegosDisponibles = [{ name: 'Uno', path: "Uno/lobby" }, { name: 'Truco', path: "Truco" }, { name: 'Chinchon', path: "Chinchon" }, { name: 'Escoba', path: "Escoba" }];
 
 
   constructor(){

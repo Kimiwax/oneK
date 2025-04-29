@@ -10,7 +10,7 @@ import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiSlider} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {injectContext} from '@taiga-ui/polymorpheus';
-import { GuardarVarsService } from '../../services/guardar-vars.service';
+import { GuardarVarsService } from '../../../services/guardar-vars.service';
 
 
 @Component({
