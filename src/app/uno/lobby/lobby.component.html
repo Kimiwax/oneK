@@ -11,6 +11,8 @@
               <h3>{{room.name}}</h3>
               <p>Jugadores: {{room.playersCount}}</p>
               <p>ID: {{room.roomID}}</p>
+
+              <button class="list_games__room__btn" (click)="joinRoom(room.roomID)">Unirse</button>
           </div>
       </div>
     </div>

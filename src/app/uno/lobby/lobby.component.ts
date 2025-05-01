@@ -37,14 +37,14 @@ export class LobbyComponent implements OnInit {
       const userID = localStorage.getItem('userId');
   
       if (nombre && userID) {
-        this.socket.emit('user_connected', { userID, nombre , game: 'uno', socketID: this.socket.id, room: null });
+        this.socket.emit('user_connected', { userID, nombre , game: 'uno', socketID: this.socket.id, roomID: null });
 
       } else {
         console.warn('⚠️ No hay nombre o userId guardado.');
       }
 
 
-      this.socket.on('rooms_updated-uno', (rooms: Array<RoomSummary>) => {
+      this.socket.on('rooms_updated', (rooms: Array<RoomSummary>) => {
         this.rooms = rooms;
 
         console.log('rooms', this.rooms);
@@ -83,6 +83,13 @@ export class LobbyComponent implements OnInit {
     }
   
     this.socket.emit('create_room', { game: 'uno', name, userID });
+  }
+
+  joinRoom(roomID: string) {
+
+
+    
+    this.socket.emit('join_room', { game: 'uno', roomID, userID: localStorage.getItem('userId') });
   }
 
 }

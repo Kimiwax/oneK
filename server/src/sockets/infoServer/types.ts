@@ -6,7 +6,8 @@ export interface User {
   nombre: string;
   game:  Games;
   socketID: string;
-  room: string;
+  roomID: string | null;
+  status: 'connected' | 'disconnected';
 }
 
 
@@ -17,16 +18,10 @@ export interface RoomInfo {
 }
 
 
-export interface Room {
-  [roomID: string]: RoomInfo;
-}
 
 
-export type Rooms = {
-  [game in Games]: Room;
-}
-
-
+export type Room = Map<string, RoomInfo>; // Mapa de salas por ID
+export type Rooms = Map<Games, Room>;     // Mapa de juegos → salas
 export interface RoomToCreate {
   game: Games;
   name: string;
