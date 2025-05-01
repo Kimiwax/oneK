@@ -1,7 +1,7 @@
 import { Server, Socket } from 'socket.io';
 import { handleUserConnected, handleDisconnect } from './userHandlers';
 import { RoomToCreate, User } from './infoServer/types';
-import { handleCreateRoom } from './roomsHandlers';
+import { handleCreateRoom, handleJoinRoom } from './roomsHandlers';
 // Podrías agregar después importaciones de rooms
 
 export function handleConnection(io: Server, socket: Socket) {
@@ -18,6 +18,11 @@ export function handleConnection(io: Server, socket: Socket) {
 
     console.log('roomToCreate', roomToCreate);
     handleCreateRoom(io, socket, roomToCreate);
+  });
+
+
+  socket.on('join_room', (data : { userID: string, roomID: string }) => {
+    handleJoinRoom(io, socket, data.userID, data.roomID);
   });
 
 

@@ -1,16 +1,23 @@
 import { Rooms } from './types';
 
-export const rooms: Rooms = {
-  uno: {
+// export const rooms: Rooms = {
+//   uno: {
 
-  },
-  truco: {
+//   },
+//   truco: {
 
-  },
-  chinchon: {
+//   },
+//   chinchon: {
 
-  },
-  escoba: {
+//   },
+//   escoba: {
 
-  }
-};
+//   }
+// };
+
+export const rooms: Rooms = new Map([
+  ['uno', new Map()],
+  ['truco', new Map()],
+  ['chinchon', new Map()],
+  ['escoba', new Map()],
+]);
